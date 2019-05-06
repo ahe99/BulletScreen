@@ -1,0 +1,91 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  color: chartreuse;
+  font-family: "微軟正黑體";
+  background-color: gray;
+}
+.bulletMain {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+.bulletWrap {
+  width: 300vw;
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  margin-bottom: 10px;
+}
+.bullet1 {
+  width: 100vw;
+  float: left;
+}
+.bullet2 {
+  width: 100vw;
+  float: left;
+}
+p {
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+#inputText {
+  top: 60%;
+  left: 50%;
+  width: 300px;
+  padding: 2px;
+  margin-left: -150px;
+  border: 2px solid black;
+  position: fixed;
+  text-align: center;
+}
+#textIntro {
+  color: darkblue;
+  font-size: 20px;
+  font-weight: bold;
+}
+textarea {
+  width: 90%;
+  height: 70px;
+}
+.verySmall {
+  font-size: 120%;
+}
+.small {
+  font-size: 150%;
+}
+.middle {
+  font-size: 200%;
+}
+.large {
+  font-size: 250%;
+}
+.veryLarge {
+  font-size: 280%;
+}
+.chartreuse {
+  color: chartreuse;
+}
+.crimson {
+  color: crimson;
+}
+.yellow {
+  color: yellow;
+}
+.pink {
+  color: pink;
+}
+.green {
+  color: green;
+}
+.orange {
+  color: orange;
+}
+.blue {
+  color: blue;
+}
+.purple {
+  color: purple;
+}
