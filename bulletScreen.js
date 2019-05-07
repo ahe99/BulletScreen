@@ -14,11 +14,10 @@ let comment1 = document.getElementsByClassName("comment1");
 let scrleft = [0];
 const sizeSet = ["verySmall", "small", "middle", "large", "veryLarge"];
 const colorSet = [
-  "chartreuse",
-  "crimson",
+  "red",
   "yellow",
   "pink",
-  "green",
+  "chartreuse",
   "orange",
   "blue",
   "purple"
@@ -78,7 +77,7 @@ btn.onclick = function() {
   let random = Math.floor(Math.random() * 5);
   data.content = text.value;
   data.size = sizeSet[random];
-  random = Math.floor(Math.random() * 8);
+  random = Math.floor(Math.random() * 7);
   data.color = colorSet[random];
 
   comment1[0].textContent = data.content;

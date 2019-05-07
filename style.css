@@ -1,7 +1,6 @@
 body {
   margin: 0px;
   padding: 0px;
-  color: chartreuse;
   font-family: "微軟正黑體";
   background-color: gray;
 }
@@ -77,9 +76,6 @@ textarea {
 .pink {
   color: pink;
 }
-.green {
-  color: green;
-}
 .orange {
   color: orange;
 }
@@ -87,5 +83,5 @@ textarea {
   color: blue;
 }
 .purple {
-  color: purple;
+  color: rgb(160, 4, 160);
 }
