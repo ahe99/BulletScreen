@@ -46,14 +46,14 @@ xhr.onload = function() {
 }; //初始化page
 
 let wholeSpeed = 15; //整體速度,越小越快
-let selfSpeed = 10;
+let selfSpeed = 15; //根據字數的速度
 function marquee() {
   for (let i = 0; i < numberOfComments; i++) {
     if (bullet1[i].offsetWidth - bulletMain[i].scrollLeft <= 0) {
       bulletMain[i].scrollLeft -= bullet1[i].offsetWidth;
       scrleft[i] = bulletMain[i].scrollLeft;
     } else {
-      scrleft[i] += Math.floor(1 + comment1[i].textContent.length / selfSpeed);
+      scrleft[i] += 1 + comment1[i].textContent.length / selfSpeed;
       bulletMain[i].scrollLeft = scrleft[i];
     }
   }
