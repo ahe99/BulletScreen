@@ -6,10 +6,9 @@
 let btn = document.getElementById("submit");
 let text = document.getElementById("text");
 let container = document.getElementById("bulletContainer");
+let bulletContainer = document.getElementById("bulletContainer");
 let bulletMain = document.getElementsByClassName("bulletMain");
-let bullet1 = document.getElementsByClassName("bullet1");
-let bullet2 = document.getElementsByClassName("bullet2");
-let comment1 = document.getElementsByClassName("comment1");
+let comment = document.getElementsByClassName("comment");
 
 let scrleft = [0];
 const sizeSet = ["verySmall", "small", "middle", "large", "veryLarge"];
@@ -33,28 +32,28 @@ xhr.onload = function() {
     for (let d of data) {
       let clone = bulletMain[0].cloneNode(true);
       container.insertBefore(clone, bulletMain[0]);
-      scrleft.unshift(d.content.length * 100);
-      comment1[0].textContent = d.content;
-      comment1[0].classList = "comment1";
-      comment1[0].classList.add(d.size);
-      comment1[0].classList.add(d.color);
-      bullet2[0].innerHTML = bullet1[0].innerHTML;
-      comment1[1].classList.remove("comment1");
+
+      scrleft.unshift(d.content.length * 10);
+      comment[0].textContent = d.content;
+      comment[0].classList = "comment";
+      comment[0].classList.add(d.size);
+      comment[0].classList.add(d.color);
+      comment[0].style.transform = "translateX(" + scrleft[0] + "px" + ")";
       numberOfComments++;
     }
   }
 }; //初始化page
 
-let wholeSpeed = 15; //整體速度,越小越快
+let wholeSpeed = 10; //整體速度,越小越快
 let selfSpeed = 15; //根據字數的速度
 function marquee() {
   for (let i = 0; i < numberOfComments; i++) {
-    if (bullet1[i].offsetWidth - bulletMain[i].scrollLeft <= 0) {
-      bulletMain[i].scrollLeft -= bullet1[i].offsetWidth;
-      scrleft[i] = bulletMain[i].scrollLeft;
+    if (comment[i].offsetWidth <= -scrleft[i]) {
+      scrleft[i] = bulletContainer.offsetWidth;
+      comment[i].style.transform = "translateX(" + scrleft[i] + "px" + ")";
     } else {
-      scrleft[i] += 1 + comment1[i].textContent.length / selfSpeed;
-      bulletMain[i].scrollLeft = scrleft[i];
+      scrleft[i] -= 1 + comment[i].textContent.length / selfSpeed;
+      comment[i].style.transform = "translateX(" + scrleft[i] + "px" + ")";
     }
   }
 } //跑馬燈
@@ -64,14 +63,11 @@ btn.onclick = function() {
   if (text.value.trim() == "") {
     alert("說點什麼吧！");
     return false;
-  } else if (text.value.trim().length > 30) {
-    alert("最多輸入30字 目前字數" + text.value.trim().length);
-    return false;
   }
 
   let clone = bulletMain[0].cloneNode(true);
   container.insertBefore(clone, bulletMain[0]);
-  scrleft.unshift(0);
+  scrleft.unshift(bulletContainer.offsetWidth);
 
   let data = new Object();
   let random = Math.floor(Math.random() * 5);
@@ -80,15 +76,14 @@ btn.onclick = function() {
   random = Math.floor(Math.random() * 7);
   data.color = colorSet[random];
 
-  comment1[0].textContent = data.content;
-  comment1[0].classList = "comment1";
-  comment1[0].classList.add(data.size);
-  comment1[0].classList.add(data.color);
-  bullet2[0].innerHTML = bullet1[0].innerHTML;
-  comment1[1].classList.remove("comment1");
+  comment[0].textContent = data.content;
+  comment[0].classList = "comment";
+  comment[0].classList.add(data.size);
+  comment[0].classList.add(data.color);
 
   text.value = "";
   numberOfComments++;
+
   xhr.open("POST", "http://localhost:3000/comments");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(data));
